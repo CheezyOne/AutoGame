@@ -28,34 +28,33 @@ public class GreenPartsPurchase : MonoBehaviour
     private void OpenNextPart() 
     {
         bool UpgradedLevel = false;
+        bool NextLevelAvailable = false;
         for (int i = 0; i < _greenPartsComponents.Length; i++)
         {
             if (_greenPartsComponents[i].LevelsToUpgrade > _unlockedLevels[i] && _unlockedLevels[i] == _partsIndex)
             {
-                _greenPartsComponents[i].IsActive = true;
+                _greenPartsComponents[i].CurrentLevel++;
                 _unlockedLevels[i]++;
                 _spriteRenderers[i].color = _colors[_unlockedLevels[i]];
                 UpgradedLevel = true;
+                for (int j = 0; j < _greenPartsComponents.Length; j++)
+                {
+                    if (_greenPartsComponents[j].LevelsToUpgrade > _unlockedLevels[j])
+                    {
+                        NextLevelAvailable = true;
+                        break;
+                    }
+                }
                 break;
             }
         }
-
+        if (!NextLevelAvailable && _partsIndex + 1 == _maxPartsIndex)
+        {
+            onAllGreenPartsUnlocked?.Invoke();
+        }
         if (!UpgradedLevel)
         {
             _partsIndex++;
-            for (int i = 0; i < _greenPartsComponents.Length; i++)
-            {
-                if (_greenPartsComponents[i].LevelsToUpgrade > _unlockedLevels[i])
-                {
-                    UpgradedLevel = true;
-                    break;
-                }
-            }
-            if (!UpgradedLevel)
-            {
-                onAllGreenPartsUnlocked?.Invoke();
-                return;
-            }
             OpenNextPart();
         }
     }

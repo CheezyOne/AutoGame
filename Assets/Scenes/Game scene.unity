@@ -482,9 +482,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9891c50db0dc7a84f8d66b2b7aedc87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsActive: 0
+  CurrentLevel: 0
   LevelsToUpgrade: 2
-  _gainedMoney: 1
+  _gainedMoney:
+  - 1
+  - 2
+  - 3
 --- !u!1 &103339935
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +568,7 @@ MonoBehaviour:
   - {fileID: 1835084235}
   - {fileID: 344422850}
   - {fileID: 1727160537}
-  - {fileID: 1077061145}
+  - {fileID: 0}
   - {fileID: 1857574052}
   _spriteRenderers:
   - {fileID: 87326869}
@@ -854,9 +857,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9891c50db0dc7a84f8d66b2b7aedc87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsActive: 0
+  CurrentLevel: 0
   LevelsToUpgrade: 1
-  _gainedMoney: 1
+  _gainedMoney:
+  - 1
+  - 2
+  - 3
 --- !u!1 &417335414
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,9 +987,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9891c50db0dc7a84f8d66b2b7aedc87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsActive: 0
+  CurrentLevel: 0
   LevelsToUpgrade: 3
-  _gainedMoney: 1
+  _gainedMoney:
+  - 1
+  - 2
+  - 3
 --- !u!1 &435724554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,9 +1414,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9891c50db0dc7a84f8d66b2b7aedc87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsActive: 0
+  CurrentLevel: 0
   LevelsToUpgrade: 1
-  _gainedMoney: 1
+  _gainedMoney:
+  - 1
+  - 2
+  - 3
 --- !u!1 &943076058
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,9 +1749,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9891c50db0dc7a84f8d66b2b7aedc87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsActive: 0
-  LevelsToUpgrade: 2
-  _gainedMoney: 1
+  CurrentLevel: 0
+  LevelsToUpgrade: 1
+  _gainedMoney:
+  - 1
+  - 2
+  - 3
 --- !u!1 &1582235291
 GameObject:
   m_ObjectHideFlags: 0
@@ -1963,9 +1978,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9891c50db0dc7a84f8d66b2b7aedc87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsActive: 0
+  CurrentLevel: 0
   LevelsToUpgrade: 1
-  _gainedMoney: 1
+  _gainedMoney:
+  - 1
+  - 2
+  - 3
 --- !u!1 &1835084231
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,9 +2108,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9891c50db0dc7a84f8d66b2b7aedc87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsActive: 0
+  CurrentLevel: 0
   LevelsToUpgrade: 1
-  _gainedMoney: 1
+  _gainedMoney:
+  - 1
+  - 2
+  - 3
 --- !u!1 &1857574048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2217,9 +2238,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9891c50db0dc7a84f8d66b2b7aedc87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsActive: 0
+  CurrentLevel: 0
   LevelsToUpgrade: 1
-  _gainedMoney: 1
+  _gainedMoney:
+  - 1
+  - 2
+  - 3
 --- !u!1 &1876165689
 GameObject:
   m_ObjectHideFlags: 0
