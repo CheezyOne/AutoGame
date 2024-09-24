@@ -6,8 +6,8 @@ public class GreenPartsPurchase : MonoBehaviour
 {
     public static Action onAllGreenPartsUnlocked;
     private int _partsIndex = 0, _maxPartsIndex = 1;
+    private List<int> _unlockedLevels = new();
     [SerializeField] private Color[] _colors;
-    [SerializeField] private List<int> _unlockedLevels;
     [SerializeField] private GreenPart[] _greenPartsComponents;
     [SerializeField] private SpriteRenderer[] _spriteRenderers;
     private void OnEnable()
