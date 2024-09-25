@@ -8,7 +8,7 @@ public class MovingPart : MonoBehaviour
     [SerializeField] private Vector2 _destinationChange;
     [SerializeField] private float _timeToMove = 1f;
     [SerializeField] private Ease _easeType = Ease.InSine;
-    public bool IsActive = false;
+    public bool IsActive = false, IsBought = false, CanBeStopped = true;
     private void OnEnable()
     {
         if (!_activatedOnPurchase)
@@ -16,7 +16,7 @@ public class MovingPart : MonoBehaviour
     }
     private void Update()
     {
-        if (!IsActive)
+        if (!IsActive || !IsBought)
             TweeningSequence.Pause();
         else TweeningSequence?.Play();
     }

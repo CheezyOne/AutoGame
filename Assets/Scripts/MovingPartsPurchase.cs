@@ -16,6 +16,7 @@ public class MovingPartsPurchase : MonoBehaviour
     }
     private void OpenNextPart()
     {
+        _movingPartsComponents[_partIndex].IsBought = true;
         _movingPartsComponents[_partIndex].IsActive = true;
         _movingPartsComponents[_partIndex].StartMoving();
         _partIndex++;
