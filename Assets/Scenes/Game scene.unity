@@ -504,6 +504,7 @@ MonoBehaviour:
   _activatedOnPurchase: 1
   _destinationChange: {x: 3, y: 0}
   _timeToMove: 1
+  _easeType: 2
   IsActive: 0
 --- !u!1 &103339935
 GameObject:
@@ -578,7 +579,6 @@ MonoBehaviour:
   - {r: 0.1583097, g: 1, b: 0, a: 1}
   - {r: 0.9313053, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.14915776, b: 0, a: 1}
-  _unlockedLevels: 
   _greenPartsComponents:
   - {fileID: 87326870}
   - {fileID: 931518561}
@@ -922,9 +922,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417335414}
-  m_LocalRotation: {x: 0, y: 0, z: -0.22495107, w: 0.9743701}
-  m_LocalPosition: {x: 1.27, y: -2.97, z: -0.10409819}
-  m_LocalScale: {x: 2, y: 0.22115934, z: 0.762079}
+  m_LocalRotation: {x: -0, y: -0, z: -0.22495107, w: 0.9743701}
+  m_LocalPosition: {x: 1.27, y: -2.9700003, z: -0.10409819}
+  m_LocalScale: {x: 2, y: 0.22115931, z: 0.762079}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1043106966}
@@ -2177,8 +2177,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835084231}
   m_LocalRotation: {x: -0, y: -0, z: -0.1603606, w: 0.9870585}
-  m_LocalPosition: {x: 3.07, y: -3.85, z: -0.10409819}
-  m_LocalScale: {x: 2, y: 0.22115934, z: 0.762079}
+  m_LocalPosition: {x: 3.0700002, y: -3.85, z: -0.10409819}
+  m_LocalScale: {x: 2, y: 0.22115931, z: 0.762079}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1043106966}

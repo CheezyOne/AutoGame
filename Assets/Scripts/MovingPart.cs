@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class MovingPart : MonoBehaviour
 {
-    private Tween _tween;
+    private Sequence TweeningSequence;
     [SerializeField] private bool _activatedOnPurchase = false;
     [SerializeField] private Vector2 _destinationChange;
     [SerializeField] private float _timeToMove = 1f;
+    [SerializeField] private Ease _easeType = Ease.InSine;
     public bool IsActive = false;
     private void OnEnable()
     {
@@ -16,13 +17,14 @@ public class MovingPart : MonoBehaviour
     private void Update()
     {
         if (!IsActive)
-            _tween.Pause();
+            TweeningSequence.Pause();
+        else TweeningSequence?.Play();
     }
-    public void StartMoving()//Requires fix
+    public void StartMoving()
     {
-        Sequence TweeningSequence = DOTween.Sequence();
         Vector2 Destination = transform.position;
-        TweeningSequence.Append(transform.DOMove(Destination + _destinationChange, _timeToMove)).Append(transform.DOMove(Destination, _timeToMove));
+        TweeningSequence = DOTween.Sequence();
+        TweeningSequence.Append(transform.DOMove(Destination + _destinationChange, _timeToMove).SetEase(_easeType)).Append(transform.DOMove(Destination, _timeToMove).SetEase(_easeType));
         TweeningSequence.SetLoops(-1).Play();
     }
 }
