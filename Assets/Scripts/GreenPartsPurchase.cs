@@ -18,12 +18,15 @@ public class GreenPartsPurchase : MonoBehaviour
                 _maxPartsIndex = _greenPartsComponents[i].LevelsToUpgrade;
             _unlockedLevels.Add(0);
         }
-        OpenNextPart();
         ShopButtons.onGreenPurchase += OpenNextPart;
     }
     private void OnDisable()
     {
         ShopButtons.onGreenPurchase -= OpenNextPart;
+    }
+    private void Awake()
+    {
+        OpenNextPart(); 
     }
     private void OpenNextPart() 
     {

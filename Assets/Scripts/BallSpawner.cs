@@ -12,10 +12,18 @@ public class BallSpawner : MonoBehaviour
     private void OnDisable()
     {
         ShopButtons.onBallSpawn -= BallSpawn;
+        DisableBalls();
     }
     private void BallSpawn(int BallIndex)
     {
         GameObject NewBall = PoolManager.SpawnObject(_spawnableBalls[BallIndex], _ballSpawn.position, Quaternion.identity, _ballHolder);
         NewBall.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(-_spawnForceX, _spawnForceX), Random.Range(-_spawnForceY, _spawnForceY)));
+    }
+    private void DisableBalls()
+    {
+        for (int i=0;i< _ballHolder.childCount;i++)
+        {
+            PoolManager.ReturnObjectToPool(_ballHolder.GetChild(i).gameObject);
+        }
     }
 }
