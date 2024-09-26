@@ -23,6 +23,7 @@ public class GreenPartsPurchase : MonoBehaviour
     private void OnDisable()
     {
         ShopButtons.onGreenPurchase -= OpenNextPart;
+        _unlockedLevels.Clear();
     }
     private void Awake()
     {
