@@ -7,7 +7,6 @@ public class MoneyManager : MonoBehaviour
     [SerializeField] private TMP_Text _moneyText;
     private void OnEnable()
     {
-        UpdateText();
         GreenPart.onGreenPartMoney += GetMoney;
     }
     private void OnDisable()

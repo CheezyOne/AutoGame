@@ -19,16 +19,13 @@ public class GreenPartsPurchase : MonoBehaviour
             _unlockedLevels.Add(0);
         }
         ShopButtons.onGreenPurchase += OpenNextPart;
+        OpenNextPart();
     }
     private void OnDisable()
     {
         ShopButtons.onGreenPurchase -= OpenNextPart;
         _unlockedLevels.Clear();
         ClearParts();
-    }
-    private void Start()
-    {
-        OpenNextPart(); 
     }
     private void ClearParts()
     {

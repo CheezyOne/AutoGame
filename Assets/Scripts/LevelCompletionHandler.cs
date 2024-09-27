@@ -16,6 +16,7 @@ public class LevelCompletionHandler : MonoBehaviour
         _gotCrucialParts = !_needsCrucialParts;
         _gotMoney = !_needsMoney;
         _moneyManager.MoneyAmount = _startingMoney;
+        _moneyManager.UpdateText();
         if (_needsMoney)
         {
             _necessaryMoneyText.text = "/" + _necessaryMoney;

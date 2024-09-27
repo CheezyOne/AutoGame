@@ -40,7 +40,6 @@ public class LevelsLoader : MonoBehaviour
     }
     public void LoatNextLevel()
     {
-        _currentLevel++;
-        LoadLevel(_currentLevel);
+        LoadLevel(_currentLevel+1);
     }
 }
