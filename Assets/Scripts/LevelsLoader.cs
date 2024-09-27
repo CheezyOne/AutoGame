@@ -6,7 +6,7 @@ public class LevelsLoader : MonoBehaviour
 {
     public static Action onLevelStart;
     private List<GameObject> _levels = new();
-    private int _currentLevel;
+    public int _currentLevel;
     private void Awake()
     {
         for(int i=0;i<transform.childCount;i++)
@@ -26,6 +26,10 @@ public class LevelsLoader : MonoBehaviour
     public void RestartLevel()
     {
         LoadLevel(_currentLevel);
+    }
+    public bool IsLastLevel()
+    {
+        return _currentLevel+1 == _levels.Count;
     }
     public void LoadLevel(int level)
     {

@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class VictoryScreen : MonoBehaviour
 {
-    [SerializeField] private GameObject _victoryScreen;
+    [SerializeField] private GameObject _victoryScreen, _congratsText, _nextButton;
+    [SerializeField] private LevelsLoader _levelsLoader;
     [SerializeField] private TMP_Text _timerText;
     private float _gameEndTimer;
     private void OnEnable()
@@ -22,8 +23,18 @@ public class VictoryScreen : MonoBehaviour
     }
     public void ActivateVictoryScreen()
     {
-        _victoryScreen.SetActive(true);
+        if(_levelsLoader.IsLastLevel())
+        {
+            _congratsText.SetActive(true);
+            _nextButton.SetActive(false);
+        }
+        else
+        {
+            _congratsText.SetActive(false);
+            _nextButton.SetActive(true);
+        }
         _timerText.text = _gameEndTimer.ToString();
+        _victoryScreen.SetActive(true);
     }
     private void Update()
     {

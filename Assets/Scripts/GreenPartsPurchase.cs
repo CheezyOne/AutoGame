@@ -24,17 +24,26 @@ public class GreenPartsPurchase : MonoBehaviour
     {
         ShopButtons.onGreenPurchase -= OpenNextPart;
         _unlockedLevels.Clear();
+        ClearParts();
     }
-    private void Awake()
+    private void Start()
     {
         OpenNextPart(); 
+    }
+    private void ClearParts()
+    {
+        for (int i = 0; i < _greenPartsComponents.Length; i++)
+        {
+            _spriteRenderers[i].color = _colors[0];
+            _partsIndex = 0;
+        }
     }
     private void OpenNextPart() 
     {
         bool UpgradedLevel = false;
         bool NextLevelAvailable = false;
         for (int i = 0; i < _greenPartsComponents.Length; i++)
-        {
+        { 
             if (_greenPartsComponents[i].LevelsToUpgrade > _unlockedLevels[i] && _unlockedLevels[i] == _partsIndex)
             {
                 _greenPartsComponents[i].CurrentLevel++;
