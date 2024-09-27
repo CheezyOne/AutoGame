@@ -6,7 +6,8 @@ public class ShopButtons : MonoBehaviour
     private bool _allGreenPartsUnlocked, _allMovingPartUnlocked;
     [SerializeField] private MoneyManager _moneyManager;
     [SerializeField] private float[] _ballcosts;
-    public static Action<int> onBallSpawn;
+    [SerializeField] private GameObject[] _spawnBalls;
+    public static Action<GameObject> onBallSpawn;
     public static Action onGreenPurchase, onMovingPurchase;
     private void OnEnable()
     {
@@ -23,7 +24,7 @@ public class ShopButtons : MonoBehaviour
     public void SpawnNewBall(int BallIndex)
     {
         if (IsEnoughMoney(_ballcosts[BallIndex]))
-            onBallSpawn?.Invoke(BallIndex);
+            onBallSpawn?.Invoke(_spawnBalls[BallIndex]);
     }
     public void BuyNewGreen(float Cost) 
     {
