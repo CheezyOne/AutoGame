@@ -13,6 +13,10 @@ public class GreenPart : MonoBehaviour
             return;
         onGreenPartMoney?.Invoke(_gainedMoney[CurrentLevel-1]);
     }
+    private void OnEnable()
+    {
+        CurrentLevel = StartingLevel;
+    }
     private void OnDisable()
     {
         CurrentLevel = StartingLevel;

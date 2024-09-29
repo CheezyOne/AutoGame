@@ -16,7 +16,9 @@ public class BallSpawner : MonoBehaviour
     private void BallSpawn(GameObject SpawnBall)
     {
         GameObject NewBall = PoolManager.SpawnObject(SpawnBall, _ballSpawn.position, Quaternion.identity, _ballHolder);
-        NewBall.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(-_spawnForceX, _spawnForceX), Random.Range(-_spawnForceY, _spawnForceY)));
+        Rigidbody2D BallRB = NewBall.GetComponent<Rigidbody2D>();
+        BallRB.velocity = Vector3.zero;
+        BallRB.AddForce(new Vector3(Random.Range(-_spawnForceX, _spawnForceX), Random.Range(-_spawnForceY, _spawnForceY)));
     }
     private void DisableBalls()
     {

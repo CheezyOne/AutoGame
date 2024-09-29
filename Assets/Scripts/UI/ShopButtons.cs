@@ -13,11 +13,18 @@ public class ShopButtons : MonoBehaviour
     {
         GreenPartsPurchase.onAllGreenPartsUnlocked += AllGreenPartsUnlocked;
         MovingPartsPurchase.onAllMovingPartsUnlocked += AllMovingPartsUnlocked;
+        LevelsLoader.onLevelStart += NullBoolsOnNewLevel;
     }
     private void OnDisable()
     {
         GreenPartsPurchase.onAllGreenPartsUnlocked -= AllGreenPartsUnlocked;
         MovingPartsPurchase.onAllMovingPartsUnlocked -= AllMovingPartsUnlocked;
+        LevelsLoader.onLevelStart -= NullBoolsOnNewLevel;
+    }
+    private void NullBoolsOnNewLevel()
+    {
+        _allGreenPartsUnlocked = false;
+        _allMovingPartUnlocked = false;
     }
     private void AllGreenPartsUnlocked() => _allGreenPartsUnlocked = true;
     private void AllMovingPartsUnlocked() => _allMovingPartUnlocked = true;
