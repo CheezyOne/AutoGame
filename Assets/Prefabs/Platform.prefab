@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1630057265975446872
+--- !u!1 &5795136205000576161
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1630057265975446875}
-  - component: {fileID: 1630057265975446885}
-  - component: {fileID: 1630057265975446874}
-  - component: {fileID: 1630057265975446884}
-  - component: {fileID: 4166118199492019888}
+  - component: {fileID: 5795136205000576162}
+  - component: {fileID: 5795136205000576156}
+  - component: {fileID: 5795136205000576163}
+  - component: {fileID: 5795136205000576157}
   m_Layer: 0
-  m_Name: Moving platform
+  m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1630057265975446875
+--- !u!4 &5795136205000576162
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1630057265975446872}
+  m_GameObject: {fileID: 5795136205000576161}
   m_LocalRotation: {x: 0, y: 0, z: -0.00034904052, w: 0.99999994}
   m_LocalPosition: {x: 0.7423, y: -2.2511, z: -0.10409819}
   m_LocalScale: {x: 1, y: 1, z: 0.8}
@@ -35,13 +34,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.04}
---- !u!212 &1630057265975446885
+--- !u!212 &5795136205000576156
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1630057265975446872}
+  m_GameObject: {fileID: 5795136205000576161}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -55,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fa8afb6d1134d29479800c545d1b30c1, type: 2}
+  - {fileID: 2100000, guid: 9f362fb785eb0ab459f2fcaa579a05b3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87,13 +86,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1630057265975446874
+--- !u!61 &5795136205000576163
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1630057265975446872}
+  m_GameObject: {fileID: 5795136205000576161}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -113,13 +112,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.2}
   m_EdgeRadius: 0
---- !u!114 &1630057265975446884
+--- !u!114 &5795136205000576157
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1630057265975446872}
+  m_GameObject: {fileID: 5795136205000576161}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9891c50db0dc7a84f8d66b2b7aedc87f, type: 3}
@@ -129,30 +128,11 @@ MonoBehaviour:
   StartingLevel: 0
   LevelsToUpgrade: 3
   _materials:
-  - {fileID: 2100000, guid: fa8afb6d1134d29479800c545d1b30c1, type: 2}
-  - {fileID: 2100000, guid: 5228b9f253428414c824e14e9569f0e7, type: 2}
-  - {fileID: 2100000, guid: df2f521bc0221a64dab67b1fc507c849, type: 2}
-  - {fileID: 2100000, guid: 5cdab4c242c773b4e891326db946751e, type: 2}
+  - {fileID: 2100000, guid: 9f362fb785eb0ab459f2fcaa579a05b3, type: 2}
+  - {fileID: 2100000, guid: 4925ebcb463def7439a7d7b8b321c0ee, type: 2}
+  - {fileID: 2100000, guid: 5c44649837ef75e4bbfc8458a9087118, type: 2}
+  - {fileID: 2100000, guid: 33228b5461fe0884b93aa8daffadb440, type: 2}
   _gainedMoney:
   - 1
   - 2
   - 3
---- !u!114 &4166118199492019888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1630057265975446872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 106276a61d7f1bf42b11ad3e4922a527, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _activatedOnPurchase: 0
-  _destinationChange: {x: 0, y: 0}
-  _timeToMove: 1
-  _easeType: 2
-  IsActive: 0
-  IsBought: 0
-  CanBeStopped: 1

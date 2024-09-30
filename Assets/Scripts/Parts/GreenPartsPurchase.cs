@@ -7,9 +7,7 @@ public class GreenPartsPurchase : MonoBehaviour
     public static Action onAllGreenPartsUnlocked;
     private int _partsIndex = 0, _maxPartsIndex = 1;
     private List<int> _unlockedLevels = new();
-    [SerializeField] private Material[] _materials;
     [SerializeField] private GreenPart[] _greenPartsComponents;
-    [SerializeField] private SpriteRenderer[] _spriteRenderers;
     private void OnEnable()
     {
         for(int i=0; i< _greenPartsComponents.Length; i++)
@@ -29,10 +27,6 @@ public class GreenPartsPurchase : MonoBehaviour
     }
     private void ClearParts()
     {
-        for (int i = 0; i < _greenPartsComponents.Length; i++)
-        {
-            _spriteRenderers[i].material = _materials[0];
-        }
         _partsIndex = 0;
     }
     private void OpenNextPart() 
@@ -43,9 +37,8 @@ public class GreenPartsPurchase : MonoBehaviour
         { 
             if (_greenPartsComponents[i].LevelsToUpgrade > _unlockedLevels[i] && _unlockedLevels[i] == _partsIndex)
             {
-                _greenPartsComponents[i].CurrentLevel++;
+                _greenPartsComponents[i].Upgrade();
                 _unlockedLevels[i]++;
-                _spriteRenderers[i].material = _materials[_unlockedLevels[i]];
                 UpgradedLevel = true;
                 for (int j = 0; j < _greenPartsComponents.Length; j++)
                 {
