@@ -16,7 +16,7 @@ public class GreenPart : MonoBehaviour
             return;
         onGreenPartMoney?.Invoke(_gainedMoney[CurrentLevel-1]);
     }
-    private void Start()
+    private void Awake()
     {
         CurrentLevel = StartingLevel;
         _spriteRenderer=GetComponent<SpriteRenderer>();

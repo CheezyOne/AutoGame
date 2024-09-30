@@ -7,7 +7,7 @@ public class LevelsLoader : MonoBehaviour
     public static Action onLevelStart;
     private List<GameObject> _levels = new();
     public int _currentLevel;
-    private void Awake()
+    private void Start()
     {
         for(int i=0;i<transform.childCount;i++)
         {
