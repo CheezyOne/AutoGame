@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Test
+  m_Name: GlowingBall
   m_Shader: {fileID: -6465566751694194690, guid: 178eac188c7727b48913895af4bf0932, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -54,5 +54,6 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 8, g: 8, b: 8, a: 1}
+    - _Test: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
