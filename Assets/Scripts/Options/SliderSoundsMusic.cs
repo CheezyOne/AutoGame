@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -5,59 +7,106 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Slider))]
 public class SliderSoundsMusic : MonoBehaviour
 {
+    public float CurrentValue;
+    [SerializeField] private Transform[] _squares;
     [SerializeField] private AudioMixer _audioMixer;
     [SerializeField] private string _mixerVariable;
     [SerializeField] private Material _changingMaterial;
-    [SerializeField] private float _currentValue, _firstMinIntensity, _firstMaxIntensity, _secondMinIntensity, _secondMaxIntensity, _thirdMinIntensity, _thirdMaxIntensity;
-    private const float FIRST_THRESHOLD = 0.5f;
-    private const float SECOND_THRESHOLD = 0.85f;
-    private Color _firstColor = new Color(191f / 255f, 0f, 0f), _secondColor = new Color(191f / 255f, 191f / 255f, 0f), _thirdColor = new Color(57f/ 255f, 191f / 255f, 0f), _finalColor = new Color(1f / 255f, 191f / 255f, 0f);
+    [SerializeField] private float _scaleUpSize = 115f, _scaleDownSize = 30f, _scaleTime = 0.4f;
+    [SerializeField] private float _firstMinIntensity, _firstMaxIntensity, _secondMinIntensity, _secondMaxIntensity, _thirdMinIntensity, _thirdMaxIntensity;
+    private const float FIRST_THRESHOLD = 0.5f, SECOND_THRESHOLD = 0.85f;
+    private Color _firstColor = new Color(191f / 255f, 0f, 0f), _secondColor = new Color(191f / 255f, 191f / 255f, 0f), _thirdColor = new Color(57f / 255f, 191f / 255f, 0f), _finalColor = new Color(1f / 255f, 191f / 255f, 0f);
+    private Slider _slider;
+    private List<bool> _squareOpened = new();
+    private float _stepForSquares;
+    private List<float> _thresholdsForSquares = new();
     public void ChangeSliderValue(float currentValue)
     {
-        _currentValue = currentValue;
-        _audioMixer.SetFloat(_mixerVariable, Mathf.Log10(_currentValue) * 20);
+        CurrentValue = currentValue;
+        _audioMixer.SetFloat(_mixerVariable, Mathf.Log10(CurrentValue) * 20);
         ChangeColors();
+        CheckForSquaresToOpen();
     }
-    private void Start()
+    public void SetSlider()
     {
-        _audioMixer.GetFloat(_mixerVariable, out _currentValue);
-        _currentValue = Mathf.Pow(10, _currentValue / 20);
-        GetComponent<Slider>().value = _currentValue;
+        _slider.value = CurrentValue;
+    }
+    private void Awake()
+    {
+        _audioMixer.GetFloat(_mixerVariable, out CurrentValue);
+        CurrentValue = Mathf.Pow(10, CurrentValue / 20);
+        _slider = GetComponent<Slider>();
+        SetSlider();
         ChangeColors();
+        _stepForSquares = 1f / _squares.Length;
+        for (int i=0;i<_squares.Length;i++)
+        {
+            _thresholdsForSquares.Add(_stepForSquares * i);
+            OpenSquare(i);
+            _squareOpened.Add(true);
+        }
+        _slider.onValueChanged.AddListener(ChangeSliderValue);
+    }
+    private void CheckForSquaresToOpen()
+    {
+        for(int i=_squares.Length-1;i>=0;i--)
+        {
+            if (CurrentValue >= _thresholdsForSquares[i])
+            {
+                for(int j = 0;j<=i;j++)
+                {
+                    OpenSquare(j);
+                    _squareOpened[i] = true;
+                }
+                break;
+            }
+            else
+            {
+                CloseSquare(i);
+                _squareOpened[i] = false;
+            }
+        }
     }
     private void ChangeColors()
     {
         Color newColor;
         float intensityScale;
-
-        if (_currentValue <= FIRST_THRESHOLD)
+        if (CurrentValue <= FIRST_THRESHOLD)
         {
             // Interpolate from red to yellow
-            float t = _currentValue / FIRST_THRESHOLD;
+            float t = CurrentValue / FIRST_THRESHOLD;
             newColor = Color.Lerp(_firstColor, _secondColor, t);
 
-            intensityScale = _firstMinIntensity + (_currentValue / FIRST_THRESHOLD) * (_firstMaxIntensity - _firstMinIntensity);
+            intensityScale = _firstMinIntensity + (CurrentValue / FIRST_THRESHOLD) * (_firstMaxIntensity - _firstMinIntensity);
         }
-        else if (_currentValue <= SECOND_THRESHOLD)
+        else if (CurrentValue <= SECOND_THRESHOLD)
         {
-            // Interpolate from yellow to green
-            float t = (_currentValue - FIRST_THRESHOLD) / (SECOND_THRESHOLD - FIRST_THRESHOLD);
+            // Interpolate from yellow to light yellow
+            float t = (CurrentValue - FIRST_THRESHOLD) / (SECOND_THRESHOLD - FIRST_THRESHOLD);
             newColor = Color.Lerp(_secondColor, _thirdColor, t);
-            intensityScale = _secondMinIntensity + (_currentValue - FIRST_THRESHOLD) / (SECOND_THRESHOLD - FIRST_THRESHOLD) * (_secondMaxIntensity - _secondMinIntensity);
+            intensityScale = _secondMinIntensity + (CurrentValue - FIRST_THRESHOLD) / (SECOND_THRESHOLD - FIRST_THRESHOLD) * (_secondMaxIntensity - _secondMinIntensity);
         }
         else
         {
-            // Interpolate from green to blue
-            float t = (_currentValue - SECOND_THRESHOLD) / (1f - SECOND_THRESHOLD);
+            // Interpolate from light yellow to green
+            float t = (CurrentValue - SECOND_THRESHOLD) / (1f - SECOND_THRESHOLD);
             newColor = Color.Lerp(_thirdColor, _finalColor, t);
-            intensityScale = _thirdMinIntensity + (_currentValue - SECOND_THRESHOLD) / (1f - SECOND_THRESHOLD) * (_thirdMaxIntensity - _thirdMinIntensity);
+            intensityScale = _thirdMinIntensity + (CurrentValue - SECOND_THRESHOLD) / (1f - SECOND_THRESHOLD) * (_thirdMaxIntensity - _thirdMinIntensity);
         }
-
         newColor.r *= Mathf.Pow(2, intensityScale);
         newColor.g *= Mathf.Pow(2, intensityScale);
         newColor.b *= Mathf.Pow(2, intensityScale);
 
-        // Set color and intensity
-        _changingMaterial.SetVector("_Color", newColor);
+        _changingMaterial.color = newColor;
+    }
+    private void OpenSquare(int index)
+    {
+        _squares[index].DOKill();
+        _squares[index].DOScale(_scaleUpSize, _scaleTime);
+    }
+    private void CloseSquare(int index)
+    {
+        _squares[index].DOKill();
+        _squares[index].DOScale(_scaleDownSize, _scaleTime);
     }
 }
