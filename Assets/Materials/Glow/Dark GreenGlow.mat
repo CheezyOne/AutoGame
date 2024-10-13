@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3227796746487254334
+--- !u!114 &-8390833323521279160
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MaterialForQuadsSounds
-  m_Shader: {fileID: -6465566751694194690, guid: 178eac188c7727b48913895af4bf0932, type: 3}
+  m_Name: Dark GreenGlow
+  m_Shader: {fileID: -6465566751694194690, guid: 85c14eb5d2c40954c90d76d9f9c82801, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -54,6 +54,5 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 0.26239866, g: 50.11814, b: 0, a: 1}
-    - _Test: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 0.023529412, g: 0.41568628, b: 0, a: 1}
   m_BuildTextureStacks: []

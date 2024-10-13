@@ -24,12 +24,19 @@ public class LevelCompletionHandler : MonoBehaviour
         else
             _necessaryMoneyText.text = string.Empty;
         CrucialPartToHit.onCrucialPartHit += GetCrucialParts;
+        CrucialPartToHit.onCrucialPartRegenerate += CrucialPartRegenerated;
     }
     private void OnDisable()
     {
         CrucialPartToHit.onCrucialPartHit -= GetCrucialParts;
+        CrucialPartToHit.onCrucialPartRegenerate -= CrucialPartRegenerated;
     }
 
+    private void CrucialPartRegenerated()
+    {
+        _currentCrucial--;
+        _gotCrucialParts = false;
+    }
     private void GetCrucialParts()
     {
         _currentCrucial++;

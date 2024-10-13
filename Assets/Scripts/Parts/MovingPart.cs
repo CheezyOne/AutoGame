@@ -4,9 +4,10 @@ using UnityEngine;
 public class MovingPart : MonoBehaviour
 {
     private Sequence TweeningSequence;
-    [SerializeField] private bool _activatedOnPurchase = false;
-    [SerializeField] private Vector2 _destinationChange;
-    [SerializeField] private float _timeToMove = 1f;
+    [SerializeField] private bool _activatedOnPurchase = false, _shallReturnToStart = true;
+    [SerializeField] private Transform[] _destinations;
+    [SerializeField] private float[] _timesToMove;
+    [SerializeField] private int _loopTimes = -1;
     [SerializeField] private Ease _easeType = Ease.InSine;
     public bool IsActive = false, IsBought = false, CanBeStopped = true;
     private void OnEnable()
@@ -22,9 +23,13 @@ public class MovingPart : MonoBehaviour
     }
     public void StartMoving()
     {
-        Vector2 Destination = transform.position;
         TweeningSequence = DOTween.Sequence();
-        TweeningSequence.Append(transform.DOMove(Destination + _destinationChange, _timeToMove).SetEase(_easeType)).Append(transform.DOMove(Destination, _timeToMove).SetEase(_easeType));
-        TweeningSequence.SetLoops(-1).Play();
+        for(int i=0;i<_destinations.Length;i++)
+        {
+            TweeningSequence.Append(transform.DOMove(_destinations[i].position, _timesToMove[i]).SetEase(_easeType));
+        }
+        if (_shallReturnToStart)
+            TweeningSequence.Append(transform.DOMove(transform.position, _timesToMove[_timesToMove.Length - 1]).SetEase(_easeType));
+        TweeningSequence.SetLoops(_loopTimes).Play();
     }
 }
