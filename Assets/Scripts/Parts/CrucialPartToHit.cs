@@ -15,6 +15,7 @@ public class CrucialPartToHit : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        StopAllCoroutines();
         _minus.SetActive(false);
         _plus.SetActive(true);
         if (collision.transform.tag == _ballTag)
