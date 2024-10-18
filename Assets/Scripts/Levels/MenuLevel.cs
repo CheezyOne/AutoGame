@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
+
 public class MenuLevel : MonoBehaviour
 {
     [SerializeField] private Image _background;
+    [SerializeField] private TMP_Text _time;
     [SerializeField] private Material[] _materials;
     [SerializeField] private int _levelToLoad = 0;
     private const float FADING_TIME = 0.15f;
