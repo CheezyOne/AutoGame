@@ -13,7 +13,7 @@ public class LevelCompletionHandler : MonoBehaviour
     private InLevelTimer _inLevelTimer => GetComponent<InLevelTimer>();
     private int _currentCrucial;
     private bool _gotCrucialParts, _gotMoney;
-    private const string LEVEL_TIME = "Level time";
+    private const string LEVEL_TIME = "LevelTime";
     private void OnEnable()
     {
         _gotCrucialParts = !_needsCrucialParts;
@@ -54,8 +54,7 @@ public class LevelCompletionHandler : MonoBehaviour
     private void SetVictoryTime()
     {
         if (PlayerPrefs.GetFloat(_currentLevel.ToString() + LEVEL_TIME) > _inLevelTimer.TimePassed || !PlayerPrefs.HasKey(_currentLevel.ToString() + LEVEL_TIME))
-            PlayerPrefs.SetFloat(_currentLevel.ToString() + LEVEL_TIME, _inLevelTimer.TimePassed);
-
+            PlayerPrefs.SetFloat(_currentLevel.ToString() + LEVEL_TIME, (float)Math.Round(_inLevelTimer.TimePassed, 2));
     }
     private void Update()
     {

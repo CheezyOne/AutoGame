@@ -10,7 +10,7 @@ public class MenuLevel : MonoBehaviour
     [SerializeField] private Material[] _materials;
     [SerializeField] private int _levelToLoad = 0;
     private const float FADING_TIME = 0.15f;
-    private const string LEVELS_PREFS = "BestLevel";
+    private const string LEVELS_PREFS = "BestLevel", LEVEL_TIME = "LevelTime";
     private Image _image;
 
     private void Awake()
@@ -23,7 +23,10 @@ public class MenuLevel : MonoBehaviour
         if (PlayerPrefs.GetInt(LEVELS_PREFS) < _levelToLoad)
             _image.material = _materials[0];
         else if (PlayerPrefs.GetInt(LEVELS_PREFS) > _levelToLoad)
+        {
+            _time.text = PlayerPrefs.GetFloat(_levelToLoad.ToString() + LEVEL_TIME).ToString();
             _image.material = _materials[1];
+        }
         else
             _image.material = _materials[2];
     }
