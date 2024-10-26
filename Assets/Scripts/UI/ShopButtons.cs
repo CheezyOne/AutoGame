@@ -4,6 +4,7 @@ using UnityEngine;
 public class ShopButtons : MonoBehaviour
 {
     private bool _allGreenPartsUnlocked, _allMovingPartUnlocked;
+    private float _lastPurchasedBallPrice = 0;
     [SerializeField] private MoneyManager _moneyManager;
     [SerializeField] private float[] _ballcosts;
     [SerializeField] private GameObject[] _spawnBalls;
@@ -14,12 +15,14 @@ public class ShopButtons : MonoBehaviour
         GreenPartsPurchase.onAllGreenPartsUnlocked += AllGreenPartsUnlocked;
         MovingPartsPurchase.onAllMovingPartsUnlocked += AllMovingPartsUnlocked;
         LevelsLoader.onLevelStart += NullBoolsOnNewLevel;
+        BallSpawner.onBallRefund += RefundBall;
     }
     private void OnDisable()
     {
         GreenPartsPurchase.onAllGreenPartsUnlocked -= AllGreenPartsUnlocked;
         MovingPartsPurchase.onAllMovingPartsUnlocked -= AllMovingPartsUnlocked;
         LevelsLoader.onLevelStart -= NullBoolsOnNewLevel;
+        BallSpawner.onBallRefund -= RefundBall;
     }
     private void NullBoolsOnNewLevel()
     {
@@ -31,7 +34,15 @@ public class ShopButtons : MonoBehaviour
     public void SpawnNewBall(int BallIndex)
     {
         if (IsEnoughMoney(_ballcosts[BallIndex]))
+        {
+            _lastPurchasedBallPrice = _ballcosts[BallIndex];
             onBallSpawn?.Invoke(_spawnBalls[BallIndex]);
+        }
+    }
+    private void RefundBall()
+    {
+        _moneyManager.MoneyAmount += _lastPurchasedBallPrice;
+        _moneyManager.UpdateText();
     }
     public void BuyNewGreen(float Cost) 
     {

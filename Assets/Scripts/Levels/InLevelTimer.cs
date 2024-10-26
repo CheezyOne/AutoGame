@@ -27,9 +27,9 @@ public class InLevelTimer : MonoBehaviour
     }
     private void OnDisable()
     {
+        _timer.SetActive(false);
         LevelsLoader.onLevelStart -= GameIsOn;
         LevelCompletionHandler.onLevelCompleted -= GameIsOff;
-        _timer.SetActive(false);
     }
     private void GameIsOn() => _isGameOn = true;
     private void GameIsOff() => _isGameOn = false;
