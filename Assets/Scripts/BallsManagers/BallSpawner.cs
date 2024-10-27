@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-
 public class BallSpawner : MonoBehaviour
 {
     public static Action onBallRefund;
