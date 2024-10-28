@@ -13,6 +13,14 @@ public class CrucialPartToHit : MonoBehaviour
     {
         _rememberRegenerateTime = _timeToRegenerate;
     }
+    private void OnEnable()
+    {
+        LevelsLoader.onLevelStart += RestartPlatform;
+    }
+    private void OnDisable()
+    {
+        LevelsLoader.onLevelStart -= RestartPlatform;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         StopAllCoroutines();
@@ -23,12 +31,16 @@ public class CrucialPartToHit : MonoBehaviour
         if (_timeToRegenerate > 0)
             StartCoroutine(Regenerate());
     }
-    private IEnumerator Regenerate()
+    private void RestartPlatform()
     {
-        yield return new WaitForSeconds(_timeToRegenerate);
         _plus.SetActive(false);
         _minus.SetActive(true);
         _timeToRegenerate = _rememberRegenerateTime;
+    }
+    private IEnumerator Regenerate()
+    {
+        yield return new WaitForSeconds(_timeToRegenerate);
+        RestartPlatform();
         onCrucialPartRegenerate?.Invoke();
     }
 }

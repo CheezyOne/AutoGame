@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5381044043326381686}
   - component: {fileID: 5381044043326381687}
   - component: {fileID: 5381044043326381684}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: SmallBounceBall
-  m_TagString: Ball
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
