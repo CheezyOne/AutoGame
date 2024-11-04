@@ -20,7 +20,7 @@ public class AchievementsPopUp : MonoBehaviour
         _startingAchievementY = _achievementsSpawnPoint.position.y;
         foreach(var achievement in _achievementsColorFix) 
         {
-            _achievementsMaterial.Add(achievement.Rarity,achievement.Material); // Это фиксит проблему с словарями в инспекторе
+            _achievementsMaterial.Add(achievement.Rarity,achievement.Material); // Это фиксит проблему со словарями в инспекторе
         }
     }
     public void AchievementPopUp(int achiemeventIndex)
@@ -37,7 +37,6 @@ public class AchievementsPopUp : MonoBehaviour
         }
         if (OccupiedSpace < 0)
             return;
-        Debug.Log(OccupiedSpace);
         GameObject NewAchievement = SpawnAchievement(achiemeventIndex);
         NewAchievement.transform.DOLocalMoveY(_startingAchievementY - ((OccupiedSpace+1) * _achievementsYMoveDistance), _achievementMovementSpeed);
         MoveAchievementUp(NewAchievement.transform, (OccupiedSpace + 1), OccupiedSpace);
