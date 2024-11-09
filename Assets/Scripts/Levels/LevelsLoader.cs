@@ -16,14 +16,6 @@ public class LevelsLoader : MonoBehaviour
             _levels[i].SetActive(false);
         }
     }
-    private void OnEnable()
-    {
-        InLevelTimer.onTimerExpire += RestartLevel;
-    }
-    private void OnDisable()
-    {
-        InLevelTimer.onTimerExpire -= RestartLevel;
-    }
     public void RestartLevel()
     {
         LoadLevel(CurrentLevel);

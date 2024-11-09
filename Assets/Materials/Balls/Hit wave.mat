@@ -26,9 +26,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _EffectStrength: 1
     - _GlowIntensity: 2.09
+    - _InvertStrength: 0
+    - _Opacity: 1
+    - _Radius: 0.6
     - _Threshold: 0
     - _ThresholdDiscard: 0
+    - _Transparency: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 1}

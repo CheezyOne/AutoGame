@@ -41,8 +41,11 @@ public class InLevelTimer : MonoBehaviour
         TimePassed += Time.deltaTime;
         if (!_isLevelOnTime)
             return;
-        if (_timeToComplete-TimePassed <= 0)
+        if (_timeToComplete - TimePassed <= 0)
+        {
+            _isGameOn = false;
             onTimerExpire?.Invoke();
+        }
         _timerText.text= Convert.ToInt32(_timeToComplete - TimePassed).ToString();
     }
 }

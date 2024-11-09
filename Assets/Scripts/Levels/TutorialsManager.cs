@@ -18,6 +18,7 @@ public class TutorialsManager : MonoBehaviour
     }
     private void StartTutorial()
     {
+        Time.timeScale = 0;
         _tutorialsCanvas.SetActive(true);
         _currentSlide = -1;
         _currentTutorial = _tutorialsHolder.GetChild(GetComponent<LevelsLoader>().CurrentLevel);
@@ -31,6 +32,7 @@ public class TutorialsManager : MonoBehaviour
         _currentSlide++;
         if (_currentTutorial.childCount <= _currentSlide)
         {
+            Time.timeScale = 1;
             _currentTutorial.gameObject.SetActive(false);
             _tutorialsCanvas.SetActive(false);
             return;
